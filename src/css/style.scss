@@ -1,0 +1,34 @@
+@import 'common.scss';
+.wrap {
+    width: 100%;
+    height: 100%;
+    @include display(flex, column);
+}
+
+#main {
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+}
+
+dl {
+    width: 100%;
+    height: px2rem(120px);
+    @include display(flex);
+    padding: px2rem(10px);
+    border-bottom: px2rem(1px) solid #ccc;
+    dt {
+        padding: px2rem(5px);
+        img {
+            width: px2rem(80px);
+            height: px2rem(80px);
+        }
+    }
+    dd {
+        flex: 1;
+        height: 100%;
+        background: pink;
+        padding-left: px2rem(10px);
+        @include display(flex, column, space-between, flex-start);
+    }
+}

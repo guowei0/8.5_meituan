@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美团</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="swiper-4.3.3.min.css"> -->
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="header">
+
+        </header>
+        <main id="main">
+
+        </main>
+    </div>
+</body>
+<script src="flexible.js"></script>
+<!-- <script src="./js/better-scroll.js"></script>
+<script src="./js/swiper-4.3.3.min.js"></script> -->
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(res) {
+        if (res.target.status === 200) {
+            var data = JSON.parse(res.target.response);
+            var html = '';
+            data.list.forEach(function(file) {
+                html += ` <dl>
+                <dt>
+                    <img src="${file.img}" alt="">
+                </dt>
+                <dd>
+                    <p>
+                        <h4>${file.title}</h4>
+                        <h5>${file.h2}</h5>
+                    </p>
+                    <h6><span><b>${file.price}</b>${file.yuanjia}</span> ${file.title}</h6>
+                </dd>
+            </dl>`;
+            })
+            main.innerHTML = html;
+        }
+    };
+    xhr.open('get', '/api/serverData', true);
+    xhr.send();
+</script>
+
+</html>
